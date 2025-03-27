@@ -42,7 +42,7 @@ export default function Home() {
         </div>
       </div>
       <footer className="text-gray-400 mt-12 text-sm">
-        © 2024 AI Era. All rights reserved.
+        © 2025 | Verse.AI | All Rights Reserved.
       </footer>
     </main>
 
