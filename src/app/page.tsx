@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import Typewriter from "./dashboard/tools/Typewriter";
 
 export default function Home() {
   const router = useRouter();
@@ -12,36 +12,11 @@ export default function Home() {
   const { status } = useSession();
   if (status === "authenticated") router.push("/dashboard");
 
-  const text = "Hello, Welcome to the AI Era."; // Full text to type
-  const [displayText, setDisplayText] = useState("");
-
-  useEffect(() => {
-    let index = 0;
-    const typingInterval = setInterval(() => {
-      if (index < text.length) {
-        setDisplayText((prev) => prev + text[index]);
-        index++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 100); // Typing speed (in ms)
-
-    return () => clearInterval(typingInterval);
-  }, []);
-
   return (
     <main className="flex flex-col items-center justify-center text-2xl gap-y-10 bg-gradient-to-b from-gray-800 to-gray-700 h-screen">
       <div className="bg-gray-800 shadow-lg rounded-xl p-10 text-center max-w-md mx-auto">
         <h1 className="font-extrabold text-6xl drop-shadow-lg text-center text-white">
-          {displayText.split(" ").map((word, i) => (
-            <span key={i}>
-              {word === "AI" ? (
-                <span className="text-blue-400">{word}</span>
-              ) : (
-                word
-              )}{" "}
-            </span>
-          ))}
+          <Typewriter text="Hello, Welcome to the AI Era." delay={100} />
         </h1>
         <p className="text-gray-300 text-lg mb-8">
           Discover the future with cutting-edge AI solutions. Sign up to start
